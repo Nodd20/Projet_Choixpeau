@@ -3,10 +3,18 @@
         ...
 '''
 
-def k_ppv_algo(profil_cible, donnees_profil, k=5):
+from math import sqrt
+
+
+
+def k_ppv_algo(profile, profile_data, k=5):
     '''
     '''
-    assert profil_cible == list; donnees_profil == list; k == int
-    pass
+    assert profile == dict; profile_data == list; k == int
+    distance_list = []
+    for i in range(len(profile_data)):
+        for compared in profile_data:
+                distance = ((compared['Courage'] - profile['Courage']) ** 2 + (compared['Ambition'] - profile['Ambition']) ** 2 + (compared['Intelligence'] - profile['Intelligence']) ** 2 + (compared['Good'] - profile['Good']) ** 2) ** 1/2
+                distance_list.append(distance)
 
     
