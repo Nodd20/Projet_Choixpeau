@@ -31,7 +31,7 @@ def k_ppv_algo(profile, profile_data, k=5):
             distance_tab.append({'Name': compared['Name'], 'Distance': distance, 'House': compared['House']})
             print(distance)
     
-    sorted(distance_tab, key=lambda x: x[i]['Distance'], reverse=True)
+    sorted(distance_tab, key=lambda x: x[(h for h in range(len(profile_data)))]['Distance'], reverse=True)
 
     for j in range(k):
         print(distance_tab[j])
