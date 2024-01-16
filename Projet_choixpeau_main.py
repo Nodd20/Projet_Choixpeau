@@ -3,9 +3,6 @@
         ...
 '''
 
-from math import sqrt
-
-
 
 def k_ppv_algo(profile, profile_data, k=5):
     '''
