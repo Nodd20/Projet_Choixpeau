@@ -25,19 +25,42 @@ def k_ppv_algo(profile, profile_data, k=5):
     '''
     '''
     distance_tab = []
-    for i in range(len(profile_data)):
-        for compared in profile_data:
-            distance = ((int(compared['Courage']) - profile['Courage']) ** 2 + (int(compared['Ambition']) - profile['Ambition']) ** 2 + (int(compared['Intelligence']) - profile['Intelligence']) ** 2 + (int(compared['Good']) - profile['Good']) ** 2) ** 1/2
-            distance_tab.append({'Name': compared['Name'], 'Distance': distance, 'House': compared['House']})
-      
-    distance_tab.sort(key=lambda dico: dico['Distance'])
-    print(distance_tab)
+    for compared in profile_data:
+        distance = ((int(compared['Courage']) - profile['Courage']) ** 2 + (int(compared['Ambition']) - profile['Ambition']) ** 2 + (int(compared['Intelligence']) - profile['Intelligence']) ** 2 + (int(compared['Good']) - profile['Good']) ** 2) ** 1/2
+        distance_tab.append({'Name': compared['Name'], 'Distance': distance, 'House': compared['House']})
     
+    distance_tab.sort(key=lambda d: d['Distance'])
+
+    gryffondor = 0
+    serpentard = 0
+    serdaigle = 0
+    poufsouffle = 0
+
     for j in range(k):
-        #print(distance_tab[j], j)
-        pass
+        if distance_tab[j]['House'] == 'Gryffindor':
+            gryffondor += 1
+        elif distance_tab[j]['House'] == 'Slytherin':
+            serpentard += 1
+        elif distance_tab[j]['House'] == 'Ravenclaw':
+            serdaigle += 1
+        elif distance_tab[j]['House'] == 'Hufflepuff':
+            poufsouffle += 1
+        
+    liste_choixpeau = [gryffondor, serdaigle, serpentard, poufsouffle]
+    liste_choixpeau.sort(reverse=True)
+
+    if liste_choixpeau[0] == gryffondor:
+        choixpeau = 'GRYFFONDOR'
+    elif liste_choixpeau[0] == serpentard:
+        choixpeau = 'SERPENTARD'
+    elif liste_choixpeau[0] == serdaigle:
+        choixpeau = 'SERDAIGLE'
+    elif liste_choixpeau[0] == poufsouffle:
+        choixpeau = 'POUFSOUFFLE'
+    
+    return choixpeau
 
 
-aimed_profile = {'Courage': 9, 'Ambition': 2, 'Intelligence': 8, 'Good': 9}
+aimed_profile = {'Courage': 6, 'Ambition': 5, 'Intelligence': 8, 'Good': 5}
 
-k_ppv_algo(aimed_profile, list_characters, 5)
+print(k_ppv_algo(aimed_profile, list_characters, 5))
