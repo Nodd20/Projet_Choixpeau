@@ -55,12 +55,12 @@ def k_ppv_algo(profile, profile_data, k=5):
         choixpeau = 'SERPENTARD'
     elif liste_choixpeau[0] == serdaigle:
         choixpeau = 'SERDAIGLE'
-    elif liste_choixpeau[0] == poufsouffle:
+    else:
         choixpeau = 'POUFSOUFFLE'
     
     return choixpeau
 
 
-aimed_profile = {'Courage': 6, 'Ambition': 5, 'Intelligence': 8, 'Good': 5}
+aimed_profile = {'Courage': 2, 'Ambition': 6, 'Intelligence': 7, 'Good': 2}
 
 print(k_ppv_algo(aimed_profile, list_characters, 5))
