@@ -29,12 +29,13 @@ def k_ppv_algo(profile, profile_data, k=5):
         for compared in profile_data:
             distance = ((int(compared['Courage']) - profile['Courage']) ** 2 + (int(compared['Ambition']) - profile['Ambition']) ** 2 + (int(compared['Intelligence']) - profile['Intelligence']) ** 2 + (int(compared['Good']) - profile['Good']) ** 2) ** 1/2
             distance_tab.append({'Name': compared['Name'], 'Distance': distance, 'House': compared['House']})
-            print(distance)
+      
+    distance_tab.sort(key=lambda dico: dico['Distance'])
+    print(distance_tab)
     
-    sorted(distance_tab, key=lambda x: x[(h for h in range(len(profile_data)))]['Distance'], reverse=True)
-
     for j in range(k):
-        print(distance_tab[j])
+        #print(distance_tab[j], j)
+        pass
 
 
 aimed_profile = {'Courage': 9, 'Ambition': 2, 'Intelligence': 8, 'Good': 9}
