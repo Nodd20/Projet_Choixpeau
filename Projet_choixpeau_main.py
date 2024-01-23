@@ -67,3 +67,15 @@ def k_ppv_algo(profile, profile_data, k=5):
 aimed_profile = {'Courage': 4, 'Ambition': 6, 'Intelligence': 7, 'Good': 8}
 
 print(k_ppv_algo(aimed_profile, list_characters))
+
+profile_1 = {'Courage': 9, 'Ambition': 2, 'Intelligence': 8, 'Good': 9}
+profile_2 = {'Courage': 6, 'Ambition': 7, 'Intelligence': 9, 'Good': 7}
+profile_3 = {'Courage': 3, 'Ambition': 8, 'Intelligence': 6, 'Good': 3}
+profile_4 = {'Courage': 2, 'Ambition': 3, 'Intelligence': 7, 'Good': 8}
+profile_5 = {'Courage': 3, 'Ambition': 4, 'Intelligence': 8, 'Good': 8}
+
+print(f"La maison du profil 1 est {k_ppv_algo(profile_1, list_characters, 5)}")
+print(f"La maison du profil 2 est {k_ppv_algo(profile_2, list_characters, 5)}")
+print(f"La maison du profil 3 est {k_ppv_algo(profile_3, list_characters, 5)}")
+print(f"La maison du profil 4 est {k_ppv_algo(profile_4, list_characters, 5)}")
+print(f"La maison du profil 5 est {k_ppv_algo(profile_5, list_characters, 5)}")
