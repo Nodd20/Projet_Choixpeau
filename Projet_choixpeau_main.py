@@ -30,7 +30,7 @@ def k_ppv_algo(profile, profile_data, k=5):
         distance_tab.append({'Name': compared['Name'], 'Distance': distance, 'House': compared['House']})
     
     distance_tab.sort(key=lambda d: d['Distance'])
-
+    
     gryffondor = 0
     serpentard = 0
     serdaigle = 0
@@ -48,19 +48,22 @@ def k_ppv_algo(profile, profile_data, k=5):
         
     liste_choixpeau = [gryffondor, serdaigle, serpentard, poufsouffle]
     liste_choixpeau.sort(reverse=True)
+    print(liste_choixpeau)
 
-    if liste_choixpeau[0] == gryffondor:
+    if liste_choixpeau[0] == liste_choixpeau[1]:
+        choixpeau = k_ppv_algo(profile, profile_data, 3)
+    elif liste_choixpeau[0] == gryffondor:
         choixpeau = 'GRYFFONDOR'
     elif liste_choixpeau[0] == serpentard:
         choixpeau = 'SERPENTARD'
     elif liste_choixpeau[0] == serdaigle:
         choixpeau = 'SERDAIGLE'
-    else:
+    elif liste_choixpeau[0] == poufsouffle:
         choixpeau = 'POUFSOUFFLE'
     
     return choixpeau
 
 
-aimed_profile = {'Courage': 2, 'Ambition': 6, 'Intelligence': 7, 'Good': 2}
+aimed_profile = {'Courage': 4, 'Ambition': 6, 'Intelligence': 7, 'Good': 8}
 
-print(k_ppv_algo(aimed_profile, list_characters, 5))
+print(k_ppv_algo(aimed_profile, list_characters))
