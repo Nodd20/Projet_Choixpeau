@@ -85,6 +85,7 @@ print(f"La maison du profil 5 est {(k_ppv_algo(profile_5, list_characters))[0][0
 
 yellow = '\033[93m' 
 blank = '\033[0m'
+green = '\033[94m'
 
 answer = int(input("Saisissez 1 si vous voulez afficher les profils préséléctionnés. Saisissez 2 pour entrer un profil."))
 
