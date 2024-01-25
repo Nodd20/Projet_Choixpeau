@@ -38,6 +38,8 @@ def k_ppv_algo(profile, profile_data, k=5):
     liste_choixpeau.sort(reverse=True)
 
     if liste_choixpeau[0] == liste_choixpeau[1]:
+        if liste_choixpeau[0] == liste_choixpeau[2]:
+            choixpeau = liste_choixpeau[0]
         choixpeau = k_ppv_algo(profile, profile_data, 3)
     elif liste_choixpeau[0] == gryffondor:
         choixpeau = 'GRYFFONDOR'
@@ -73,26 +75,31 @@ profile_3 = {'Courage': 3, 'Ambition': 8, 'Intelligence': 6, 'Good': 3}
 profile_4 = {'Courage': 2, 'Ambition': 3, 'Intelligence': 7, 'Good': 8}
 profile_5 = {'Courage': 3, 'Ambition': 4, 'Intelligence': 8, 'Good': 8}
 
+'''
 print(f"La maison du profil 1 est {k_ppv_algo(profile_1, list_characters)[0]}, car vos voisins sont {k_ppv_algo(profile_1, list_characters)[1]}")
 print(f"La maison du profil 2 est {k_ppv_algo(profile_2, list_characters)[0]}, car vos voisins sont {k_ppv_algo(profile_2, list_characters)[1]}")
 print(f"La maison du profil 3 est {k_ppv_algo(profile_3, list_characters)[0]}, car vos voisins sont {k_ppv_algo(profile_3, list_characters)[1]}")
 print(f"La maison du profil 4 est {k_ppv_algo(profile_4, list_characters)[0]}, car vos voisins sont {k_ppv_algo(profile_4, list_characters)[1]}")
 print(f"La maison du profil 5 est {(k_ppv_algo(profile_5, list_characters))[0][0]}, car vos voisins sont {k_ppv_algo(profile_5, list_characters)[1]}")
+'''
+
+yellow = '\033[93m' 
+blank = '\033[0m'
 
 answer = int(input("Saisissez 1 si vous voulez afficher les profils préséléctionnés. Saisissez 2 pour entrer un profil."))
 
 while answer == 1 or answer == 2:
-    if answer == 1:
-        pass 
+    if answer == 1: 
+        answer = int(input("Saisissez 1 si vous voulez afficher les profils préséléctionnés. Saisissez 2 pour entrer un profil."))
 
     else:
         courage = int(input("De 1 à 9 quel est son courage ?"))
         ambition = int(input("De 1 à 9 quel est son ambition ?"))
-        intelligence = int(input("De 1 à 9 quel est son intelligence"))
+        intelligence = int(input("De 1 à 9 quel est son intelligence ?"))
         good = int(input("De 1 à 9 quel est sa bonté ?"))
 
         profile_settings = {'Courage': courage, 'Ambition': ambition, 'Intelligence': intelligence, 'Good': good}
 
-        house = k_ppv_algo(profile_settings, list_characters)[0][0]
-        print(f"Votre personnage est de la maison :{house}, ses voisins sont{k_ppv_algo(profile_settings, list_characters)}")
+        house = k_ppv_algo(profile_settings, list_characters)[0]
+        print(f"Votre personnage est de la maison:{yellow + house + blank}, ses voisins sont{k_ppv_algo(profile_settings, list_characters)[1]}")
         answer = int(input("Saisissez 1 si vous voulez afficher les profils préséléctionnés. Saisissez 2 pour entrer un profil."))
