@@ -87,10 +87,13 @@ answer = int(input("Saisissez 1 si vous voulez afficher les profils préséléct
 
 while answer == 1 or answer == 2:
     if answer == 1:
+        numero = 1
         for profile in liste_profiles:
-            print(f"La maison du profile est {yellow + k_ppv_algo(profile, list_characters)[0] + blank}, car ses voisins sont:")
+            print(f"La maison du profile {numero} est {yellow + k_ppv_algo(profile, list_characters)[0] + blank}, car ses voisins sont:")
             for j in range(5):
                 print(f"{blue + k_ppv_algo(profile, list_characters)[1][j]['Name'] + blank}, de la maison {yellow + k_ppv_algo(profile, list_characters)[1][j]['House'] + blank}")
+            numero += 1
+
         answer = int(input("Saisissez 1 si vous voulez afficher les profils préséléctionnés. Saisissez 2 pour entrer un profil."))
 
     else:
@@ -104,5 +107,5 @@ while answer == 1 or answer == 2:
         house = k_ppv_algo(profile_settings, list_characters)[0]
         print(f"Votre personnage est de la maison:{yellow + house + blank}, ses voisins sont:")
         for i in range(5):
-            print(f"{yellow + k_ppv_algo(profile_settings, list_characters)[1][i]['Name'] + blank}, de la maison {blue + k_ppv_algo(profile_settings, list_characters)[1][i]['House'] + blank}")
-        answer = int(input("Saisissez 1 si vous voulez afficher les profils préséléctionnés. Saisissez 2 pour entrer un profil."))
+            print(f"{blue + k_ppv_algo(profile_settings, list_characters)[1][i]['Name'] + blank}, de la maison {yellow + k_ppv_algo(profile_settings, list_characters)[1][i]['House'] + blank}")
+        answer = int(input("Saisissez 1 si vous voulez afficher les profils préselectionnés. Saisissez 2 pour entrer un profil."))
