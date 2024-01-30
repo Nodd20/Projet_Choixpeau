@@ -108,4 +108,5 @@ while answer == 1 or answer == 2:
         print(f"Votre personnage est de la maison:{yellow + house + blank}, ses voisins sont:")
         for i in range(5):
             print(f"{blue + k_ppv_algo(profile_settings, list_characters)[1][i]['Name'] + blank}, de la maison {yellow + k_ppv_algo(profile_settings, list_characters)[1][i]['House'] + blank}")
+            
         answer = int(input("Saisissez 1 si vous voulez afficher les profils préselectionnés. Saisissez 2 pour entrer un profil."))
