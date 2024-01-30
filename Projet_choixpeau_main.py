@@ -24,7 +24,7 @@ def k_ppv_algo(profile, profile_data, k=5):
     tab_voisins = []
 
     for j in range(k):
-        tab_voisins.append({distance_tab[j]['Name']: distance_tab[j]['House']})
+        tab_voisins.append({'Name' : distance_tab[j]['Name'],'House' : distance_tab[j]['House']})
         if distance_tab[j]['House'] == 'Gryffindor':
             gryffondor += 1
         elif distance_tab[j]['House'] == 'Slytherin':
@@ -38,21 +38,20 @@ def k_ppv_algo(profile, profile_data, k=5):
     liste_choixpeau.sort(reverse=True)
 
     if liste_choixpeau[0] == liste_choixpeau[1]:
-        if liste_choixpeau[0] == liste_choixpeau[2]:
-            choixpeau = liste_choixpeau[0]
-        choixpeau = k_ppv_algo(profile, profile_data, 3)
+        choixpeau = distance_tab[0]['House']
     elif liste_choixpeau[0] == gryffondor:
-        choixpeau = 'GRYFFONDOR'
+        choixpeau = 'Gryffindor'
     elif liste_choixpeau[0] == serpentard:
-        choixpeau = 'SERPENTARD'
+        choixpeau = 'Slytherin'
     elif liste_choixpeau[0] == serdaigle:
-        choixpeau = 'SERDAIGLE'
+        choixpeau = 'Ravenclaw'
     elif liste_choixpeau[0] == poufsouffle:
-        choixpeau = 'POUFSOUFFLE'
+        choixpeau = 'Hufflepuff'
     
     return choixpeau, tab_voisins
 
 
+# Fusion de tables début
 with open("Caracteristiques_des_persos.csv", mode='r', encoding='utf-8') as f:
     reader = csv.DictReader(f, delimiter=';')
     caracteristiques_persos = [{key : value for key, value in element.items()} for element in reader]
@@ -68,29 +67,30 @@ for persos_1 in caracteristiques_persos:
         if persos_1['Name'] == persos_2['Name']:
             persos_1.update(persos_2)
             list_characters.append(persos_1)
+# fusion de tables fin
 
-profile_1 = {'Courage': 9, 'Ambition': 2, 'Intelligence': 8, 'Good': 9}
+profile_1 = {'Courage': 9, 'Ambition': 2, 'Intelligence': 8, 'Good': 9} # profiles préselectionnés 
 profile_2 = {'Courage': 6, 'Ambition': 7, 'Intelligence': 9, 'Good': 7}
 profile_3 = {'Courage': 3, 'Ambition': 8, 'Intelligence': 6, 'Good': 3}
 profile_4 = {'Courage': 2, 'Ambition': 3, 'Intelligence': 7, 'Good': 8}
 profile_5 = {'Courage': 3, 'Ambition': 4, 'Intelligence': 8, 'Good': 8}
 
-'''
-print(f"La maison du profil 1 est {k_ppv_algo(profile_1, list_characters)[0]}, car vos voisins sont {k_ppv_algo(profile_1, list_characters)[1]}")
-print(f"La maison du profil 2 est {k_ppv_algo(profile_2, list_characters)[0]}, car vos voisins sont {k_ppv_algo(profile_2, list_characters)[1]}")
-print(f"La maison du profil 3 est {k_ppv_algo(profile_3, list_characters)[0]}, car vos voisins sont {k_ppv_algo(profile_3, list_characters)[1]}")
-print(f"La maison du profil 4 est {k_ppv_algo(profile_4, list_characters)[0]}, car vos voisins sont {k_ppv_algo(profile_4, list_characters)[1]}")
-print(f"La maison du profil 5 est {(k_ppv_algo(profile_5, list_characters))[0][0]}, car vos voisins sont {k_ppv_algo(profile_5, list_characters)[1]}")
-'''
+liste_profiles = [profile_1, profile_2, profile_3, profile_4, profile_5]
 
 yellow = '\033[93m' 
 blank = '\033[0m'
-green = '\033[94m'
+blue = '\033[94m'
+
+# IHM
 
 answer = int(input("Saisissez 1 si vous voulez afficher les profils préséléctionnés. Saisissez 2 pour entrer un profil."))
 
 while answer == 1 or answer == 2:
-    if answer == 1: 
+    if answer == 1:
+        for profile in liste_profiles:
+            print(f"La maison du profile est {yellow + k_ppv_algo(profile, list_characters)[0] + blank}, car ses voisins sont:")
+            for j in range(5):
+                print(f"{blue + k_ppv_algo(profile, list_characters)[1][j]['Name'] + blank}, de la maison {yellow + k_ppv_algo(profile, list_characters)[1][j]['House'] + blank}")
         answer = int(input("Saisissez 1 si vous voulez afficher les profils préséléctionnés. Saisissez 2 pour entrer un profil."))
 
     else:
@@ -102,5 +102,7 @@ while answer == 1 or answer == 2:
         profile_settings = {'Courage': courage, 'Ambition': ambition, 'Intelligence': intelligence, 'Good': good}
 
         house = k_ppv_algo(profile_settings, list_characters)[0]
-        print(f"Votre personnage est de la maison:{yellow + house + blank}, ses voisins sont{k_ppv_algo(profile_settings, list_characters)[1]}")
+        print(f"Votre personnage est de la maison:{yellow + house + blank}, ses voisins sont:")
+        for i in range(5):
+            print(f"{yellow + k_ppv_algo(profile_settings, list_characters)[1][i]['Name'] + blank}, de la maison {blue + k_ppv_algo(profile_settings, list_characters)[1][i]['House'] + blank}")
         answer = int(input("Saisissez 1 si vous voulez afficher les profils préséléctionnés. Saisissez 2 pour entrer un profil."))
