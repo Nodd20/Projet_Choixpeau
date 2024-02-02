@@ -36,9 +36,9 @@ def k_ppv_algo(profile, profile_data, k=5):
 
     if maisons[0]['number'] == maisons[1]['number']:
         if maisons[0]['house'] == distance_tab[0]['House']:
-            choixpeau = distance_tab[0]['House']
+            choixpeau = maisons[0]['house']
         else:
-            choixpeau = distance_tab[1]['House']
+            choixpeau = maisons[1]['house']
             
     # En cas d'égalité, est pris le voisin le plus proche faisant parti des maisons égalitaires
     else:
