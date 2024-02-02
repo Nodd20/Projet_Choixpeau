@@ -1,6 +1,15 @@
 # coding: utf-8
 '''
-        ...
+Codé par : Nolan DOUET, Justin LESTRAT, MOHAMED SOW
+
+Projet NSI 3, partie I "Le Choixpeau magique"
+
+Le programme permet grâce à l'algorithme des K plus proches voisins
+de déterminer la maison de différents profils.
+
+Licence : CC-BY-NC-SA
+
+github : https://github.com/Nodd20/Projet_Choixpeau 
 '''
 
 import csv
@@ -8,7 +17,19 @@ import csv
 
 def k_ppv_algo(profile, profile_data, k=5):
     '''
+    Cette fonction renvoie un tuple contenant la maison défini par
+    l'algorithme et un dictionnaire permettant de connaitre les plus 
+    proches voisins du profil initial. Elle met en oeuvre un algorithme
+    des k plus proches voisins.
     
+    Entrées:
+        profile : dictionnaire avec les 4 caractéristiques du profil
+        profile_data : table contenant l'ensemble des profils de l'univers d'Harry Potter ainsi que leur caractéristiques
+        k : entier déterminant le nombre de voisins considérés (par défaut 5)
+        
+    Sorties:
+        choixpeau : chaîne de caractères donnant la maisosn du profil
+        tab_voisins : table contenant les voisins et leurs caractéristiques
     '''
     distance_tab = []
     for compared in profile_data:
