@@ -33,7 +33,7 @@ def k_ppv_algo(profile, profile_data, k=5):
     '''
     distance_tab = []
     for compared in profile_data:
-        distance = ((int(compared['Courage']) - profile['Courage']) ** 2 + (int(compared['Ambition']) - profile['Ambition']) ** 2 + (int(compared['Intelligence']) - profile['Intelligence']) ** 2 + (int(compared['Good']) - profile['Good']) ** 2) ** 1/2
+        distance = ((float(compared['Courage']) - profile['Courage']) ** 2 + (float(compared['Ambition']) - profile['Ambition']) ** 2 + (float(compared['Intelligence']) - profile['Intelligence']) ** 2 + (float(compared['Good']) - profile['Good']) ** 2) ** 1/2
         distance_tab.append({'Name': compared['Name'], 'Distance': distance, 'House': compared['House']})
     
     distance_tab.sort(key=lambda d: d['Distance'])
@@ -114,15 +114,15 @@ while answer == 1 or answer == 2:
         answer = int(input("Saisissez 1 si vous voulez afficher les profils préséléctionnés. Saisissez 2 pour entrer un profil."))
 
     else:
-        courage = int(input("De 1 à 9 quel est son courage ?"))
-        ambition = int(input("De 1 à 9 quel est son ambition ?"))
-        intelligence = int(input("De 1 à 9 quel est son intelligence ?"))
-        good = int(input("De 1 à 9 quel est sa bonté ?"))
+        courage = float(input("De 1 à 9 quel est son courage ?"))
+        ambition = float(input("De 1 à 9 quel est son ambition ?"))
+        intelligence = float(input("De 1 à 9 quel est son intelligence ?"))
+        good = float(input("De 1 à 9 quel est sa bonté ?"))
 
-        assert courage < 10 and courage > 0, 'Courage compris entre 0 et 10 non inclus'
-        assert ambition < 10 and ambition > 0, 'Ambition compris entre 0 et 10 non inclus'
-        assert intelligence < 10 and intelligence > 0, 'Intelligence compris entre 0 et 10 non inclus'
-        assert good < 10 and good > 0, 'Bonté compris entre 0 et 10 non inclus'
+        assert courage <= 9 and courage > 0, 'Courage compris entre 0 et 9'
+        assert ambition <= 9 and ambition > 0, 'Ambition compris entre 0 et 9'
+        assert intelligence <= 9 and intelligence > 0, 'Intelligence compris entre 0 et 9'
+        assert good <= 9 and good > 0, 'Bonté compris entre 0 et 9'
 
         profile_settings = {'Courage': courage, 'Ambition': ambition, 'Intelligence': intelligence, 'Good': good}
 
