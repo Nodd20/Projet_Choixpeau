@@ -33,7 +33,7 @@ def k_ppv_algo(profile, profile_data, k=5):
     '''
     distance_tab = []
     for compared in profile_data:
-        distance = ((float(compared['Courage']) - profile['Courage']) ** 2 + (float(compared['Ambition']) - profile['Ambition']) ** 2 + (float(compared['Intelligence']) - profile['Intelligence']) ** 2 + (float(compared['Good']) - profile['Good']) ** 2) ** 1/2
+        distance = ((float(compared['Courage']) - profile['Courage']) ** 2 + (float(compared['Ambition']) - profile['Ambition']) ** 2 + (float(compared['Intelligence']) - profile['Intelligence']) ** 2 + (float(compared['Good']) - profile['Good']) ** 2) ** 0.5
         distance_tab.append({'Name': compared['Name'], 'Distance': distance, 'House': compared['House']})
     
     distance_tab.sort(key=lambda d: d['Distance'])
