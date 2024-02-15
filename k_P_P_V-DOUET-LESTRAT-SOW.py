@@ -84,6 +84,7 @@ for persos_1 in caracteristiques_persos:
         if persos_1['Name'] == persos_2['Name']:
             persos_1.update(persos_2)
             list_characters.append(persos_1)
+                       
 # fusion de tables fin
 
 profile_1 = {'Courage': 9, 'Ambition': 2, 'Intelligence': 8, 'Good': 9} # profiles préselectionnés 
