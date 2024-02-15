@@ -12,3 +12,5 @@ Licence : CC-BY-NC-SA
 github : https://github.com/Nodd20/Projet_Choixpeau 
 '''
 
+from choixpeau_partie_2 import *
+
