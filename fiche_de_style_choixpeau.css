@@ -1,3 +1,25 @@
-p{
-    color: rgb(14, 14, 196);
+p {
+    text-align: center;   
+    color: rgb(177, 158, 52);
+}
+
+img { 
+animation: rotate 2s linear infinite ;
+display: block;
+margin-left: auto;
+margin-right: auto;
+}
+
+h1 {
+text-align: center; 
+color: rgb(14, 14, 196);
+font-family: cursive;
+}
+@keyframes rotate {
+from {
+  transform: rotate(0deg);
+} 
+to {
+  transform: rotate(360deg);
+}
 }
