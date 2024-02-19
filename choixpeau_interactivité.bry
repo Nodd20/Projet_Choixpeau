@@ -2,10 +2,9 @@
 '''
 Codé par : Nolan DOUET, Justin LESTRAT, MOHAMED SOW
 
-Projet NSI 3, partie I "Le Choixpeau magique"
+Projet NSI 3, partie II "Le Choixpeau magique"
 
-Le programme permet grâce à l'algorithme des K plus proches voisins
-de déterminer la maison de différents profils.
+Le programme permet !!!
 
 Licence : CC-BY-NC-SA
 
