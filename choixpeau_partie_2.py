@@ -43,4 +43,18 @@ def caracteriseur(dico_cara, reponse, question_num, table_question):
 
     categorie = table_question[question_num]['Categorie']
     dico_cara[categorie] = dico_cara[categorie] + reponse
+
+    return dico_cara
+
+def voisins(dico_voisin, dico_cara):
+    '''
+    '''
+    distance_tab = []
+    for compared in dico_voisin:
+        distance = (float(compared['Courage']) - float(dico_cara['Courage']) ** 2 + float(compared['Ambition']) - float(dico_cara['Ambition']) ** 2 + float(compared['Intelligence']) - float(dico_cara['Intelligence']) ** 2 + float(compared['Good']) - float(dico_cara['Good']) ** 2) ** 0.5
+        distance_tab.append({'Name': compared['Name'], 'Distance': distance, 'House': compared['House']})
     
+    distance_tab.sort(key=lambda d: d['Distance'])
+
+    return distance_tab
+
