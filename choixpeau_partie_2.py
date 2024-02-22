@@ -58,3 +58,39 @@ def voisins(dico_voisin, dico_cara):
 
     return distance_tab
 
+def choixpeau(distance_tab, k=5):
+    '''
+    '''
+
+    distance_tab.sort(key=lambda d: d['Distance'])
+    
+    maisons = [{'house': 'Gryffindor', 'number': 0} , {'house':'Slytherin','number': 0}, {'house':'Ravenclaw','number': 0}, {'house':'Hufflepuff', 'number': 0}]
+    
+    # liste de dictionnaires nécessaire pour permettre le tri ultérieur des données
+
+    tab_voisins = []
+
+    for j in range(k):
+        tab_voisins.append({'Name' : distance_tab[j]['Name'],'House' : distance_tab[j]['House']})
+        if distance_tab[j]['House'] == 'Gryffindor':
+            maisons[0]['number'] += 1
+        elif distance_tab[j]['House'] == 'Slytherin':
+            maisons[1]['number'] += 1
+        elif distance_tab[j]['House'] == 'Ravenclaw':
+            maisons[2]['number'] += 1
+        elif distance_tab[j]['House'] == 'Hufflepuff':
+            maisons[3]['number'] += 1
+        
+    maisons.sort(key=lambda x: x['number'], reverse=True) # tri des données de la liste de dictionnaire grâce à la clé 'number' 
+
+    if maisons[0]['number'] == maisons[1]['number']:
+        if maisons[0]['house'] == distance_tab[0]['House']:
+            choixpeau = maisons[0]['house']
+        else:
+            choixpeau = maisons[1]['house']
+            
+    # En cas d'égalité, est pris le voisin le plus proche faisant parti des maisons égalitaires
+    else:
+        choixpeau = maisons[0]['house']
+    
+    return choixpeau, tab_voisins
