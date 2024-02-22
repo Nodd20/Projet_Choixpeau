@@ -32,6 +32,7 @@ def questionnaire(question_num, table_question):
     assert table_question == list
 
     question = table_question[question_num]['Question']
+
     return question
 
 def caracteriseur(dico_cara, reponse, question_num, table_question):
