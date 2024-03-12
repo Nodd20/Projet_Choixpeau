@@ -1,6 +1,6 @@
 p {
-    text-align: center;   
-    color: rgb(177, 158, 52);
+text-align: center;   
+color: rgb(177, 158, 52);
 }
 
 img { 
@@ -11,12 +11,14 @@ margin-right: auto;
 }
 
 h1 {
+background-color: aqua;
 text-align: center; 
-color: rgb(14, 14, 196);
+color: rgb(111, 214, 128);
 font-family: cursive;
 }
 
 body {
+background-color: aquamarine;
 text-align: center;
 }
 
@@ -27,4 +29,15 @@ from {
 to {
   transform: rotate(360deg);
 }
+}
+
+question{
+  padding: 100;
+  margin: 400;
+}
+
+button{
+color: blue;
+background-color: rgb(12, 48, 48);
+border-color: rgb(12, 48, 48);
 }
