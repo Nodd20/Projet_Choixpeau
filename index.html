@@ -1,0 +1,64 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="fiche_de_style_choixpeau.css" rel="stylesheet">
+
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/brython@3.12.2/brython.min.js">
+    </script>
+
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/brython@3.12.2/brython_stdlib.js">
+    </script>
+</head>
+
+<body>
+    <h1>
+        Bienvenue sur le site du choixpeau magique !
+    </h1>
+    
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Coat_of_arms_Hogwart_with_motto.svg/250px-Coat_of_arms_Hogwart_with_motto.svg.png" alt="blason poudlard">
+
+    <script type="text/python">
+    from browser import document
+    counter = 0
+
+    def increment_counter(event):
+        global counter
+        if counter < 19:
+            counter += 1
+            
+        document["counter_display"].text = "Compteur : " + str(counter)
+
+
+    button = document.createElement("button")
+    button.text = "Next"
+    button.bind("click", increment_counter)
+    document <= button
+        
+    counter_display = document.createElement("p")
+    counter_display.id = "counter_display"
+    counter_display.text = "Compteur : 0"
+    document <= counter_display
+
+    ```html
+
+
+    Changer le texte
+    " target="_blank">https://cdn.jsdelivr.net/npm/brython@3.9.5/brython.min.js">
+
+    Cliquez ici
+
+    Texte initial
+
+
+    ```
+        
+    </script>
+
+</body>
+<button class="favorite styled" type="button">return</button>
+</html>
