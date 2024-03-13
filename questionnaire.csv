@@ -1,21 +1,21 @@
-id,Question,Categorie
-1,Tu es du genre à aller à la bibliothèque pour lire au lieu de sortir dehors ,intelligence
-2,Tu préfères prendre des risques quitte à mettre des gens en danger que de ne rien faire,courage
-3,Tu es près à sacrifier du temps avec les autres pour les aider,bonté
-4,"Tu souhaites accomplir de grandes choses, rester dans l’histoire",ambition
-5,Tu fais attention aux êtres qui t’entourent et essaye de les rendre heureux,bonté
-6,Tu apprécies parler de sujets sérieux en ayant des connaissances sur le sujet,intelligence
-7,"Tu serais capable d’aller chercher un bébé dans une maison en feu, de mettre ta vie en jeu",courage
-8,Dans une compétition tu penses toujours être en mesure de gagner,ambition
-9,Tu recherches la vérité peu importe les conséquences !0!,intelligence
-10,Tu aimes partager avec tes amis,bonté
-11,Il t’arrive régulièrement de surmonter tes peurs,courage
-12,Tu vas régulièrement voir ta famille ,bonté
-13,Tu es capable de prendre des décisions difficiles  si cela est nécessaire,ambition
-14,Il t’arrive fréquemment de rester plonger dans tes pensées ,bonté
-15,,
-16,,
-17,,
-18,,
-19,,
-20,,
+id;Question;Categorie
+1;Tu es du genre a aller a la bibliotheque pour lire au lieu de sortir dehors;intelligence
+2;Tu preferes prendre des risques quitte a mettre des gens en danger que de ne rien faire;courage
+3;Tu es pres a sacrifier du temps avec les autres pour les aider;bonte
+4;Tu souhaites accomplir de grandes choses, rester dans l histoire;ambition
+5;Tu fais attention aux personnes qui t entourent et essaye de les rendre heureux;bonte
+6;Tu apprecies parler de sujets serieux en ayant des connaissances sur le sujet;intelligence
+7;Tu serais capable d aller chercher un bebe dans une maison en feu, de mettre ta vie en jeu;courage
+8;Dans une competition tu penses toujours etre en mesure de gagner;ambition
+9;Tu recherches la verite peu importe les consequences ;intelligence
+10;Tu aimes partager avec tes amis;bonte
+11;Il t arrive regulierement de surmonter tes peurs;courage
+12;Tu vas souvent voir ta famille ;bonte
+13;Tu es capable de prendre des decisions difficiles  si cela est necessaire;ambition
+14;Il t arrive frequemment de rester plonger dans tes pensees ;bonte
+15;a;bonte
+16;a;bonte
+17;a;bonte
+18;a;bonte
+19;a;bonte
+20;a;bonte
