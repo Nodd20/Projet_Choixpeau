@@ -1,44 +1,106 @@
-<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link href="fiche_de_style_choixpeau.css" rel="stylesheet">
-    </head>
-    <body>
-        <h1>
-            Bienvenue sur le site du choixpeau magique !
 
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Coat_of_arms_Hogwart_with_motto.svg/250px-Coat_of_arms_Hogwart_with_motto.svg.png" alt="blason poudlard">
-        </h1>
-        
-        <div>
-            <input type="radio" id="b2" name="rep" value="2">
-            <label for="b2">Parfaitement d'accord</label>
-        </div>
-        <div>
-            <input type="radio" id="b1" name="rep" value="1">
-            <label for="b1">D'accord</label>
-        </div>
-        <div>
-            <input type="radio" id="b0" name="rep" value="0" checked>
-            <label for="b0">Neutre</label>
-        </div>
-        <div>
-            <input type="radio" id="b-1" name="rep" value="-1">
-            <label for="b-1">Pas d'accord</label>
-        </div>
-        <div>
-            <input type="radio" id="b-2" name="rep" value="-2">
-            <label for="b-2">Pas du tout d'accord</label>
-        </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="fiche_de_style_choixpeau.css" rel="stylesheet">
 
-        <button class="boutons" type="button">next</button>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/brython@3.12.2/brython.min.js">
+    </script>
 
-        <div id="question">
-            ///futur affichag des questions///
-        </div>
-    </body>
-    
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/brython@3.12.2/brython_stdlib.js">
+    </script>
+</head>
+
+<body>
+    <h1>
+        Bienvenue sur le site du choixpeau magique !
+    </h1>
+
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Coat_of_arms_Hogwart_with_motto.svg/250px-Coat_of_arms_Hogwart_with_motto.svg.png" alt="blason poudlard">
+
+    <div id="questionnaire">
+
+    </div>
+
+    <script type="text/python">
+    from browser import document
+
+    questions = [
+        ("Question 1 : Tu es du genre à aller à la bibliothèque pour lire au lieu de sortir dehors", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
+        ("Question 2 : Tu préfères prendre des risques quitte à mettre des gens en danger que de ne rien faire", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
+        ("Question 3 : Tu es pres a sacrifier du temps avec les autres pour les aider", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
+        ("Question 4 : Tu souhaites accomplir de grandes choses, rester dans l histoire", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
+        ("Question 5 : Tu fais attention aux personnes qui t entourent et essaye de les rendre heureux", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
+        ("Question 6 : Tu apprecies parler de sujets serieux en ayant des connaissances sur le sujet", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
+        ("Question 7 : Tu serais capable d aller chercher un bebe dans une maison en feu, de mettre ta vie en jeu", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
+        ("Question 8 : Dans une competition tu penses toujours etre en mesure de gagner", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
+        ("Question 9 : Tu recherches la verite peu importe les consequences", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
+        ("Question 10 : Tu aimes partager avec tes amis", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
+        ("Question 11 : Il t arrive regulierement de surmonter tes peurs", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
+        ("Question 12 : Tu vas souvent voir ta famille", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
+        ("Question 13 : Tu es capable de prendre des decisions difficiles  si cela est necessaire", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
+        ("Question 14 : Il t arrive frequemment de rester plonger dans tes pensees", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
+        ("Question 15 : Je trouve important de donner de mon temps pour des actions bénévoles ou caritatives", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
+        ("Question 16 : J'aime aider les autres et je suis souvent considéré comme une personne empathique.", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
+        ("Question 17 : J'accorde une grande importance à l'intégrité et à la loyauté dans mes relations avec les autres", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
+        ("Question 18 : Préfères-tu régler les conflits en trouvant un compromis qui satisfait tout le monde plutôt que de chercher à imposer ta volonté ?", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
+        ("Question 19 : Est-ce que tu te sens mal quand tu vois quelqu'un être maltraité ou malheureux ?", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
+        ("Question 20 : As-tu tendance à pardonner facilement aux personnes qui t'ont fait du tort ?", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"])
+    ]
+
+    counter = 0
+    next_button = None
+
+    def create_question(question, answers):
+        question_div = document.createElement("div")
+        question_div.text = question
+        document["questionnaire"] <= question_div
+        for answer in answers:
+            radio_button = document.createElement("input")
+            radio_button.type = "radio"
+            radio_button.name = f"question_{counter}"
+            radio_button.value = answer
+            question_div <= radio_button
+
+            label = document.createElement("label")
+            label.text = answer
+            question_div <= label
+            question_div <= document.createElement("br")
+
+    def increment_counter(event):
+        global counter
+        global next_button
+        if counter < len(questions) - 1:
+            counter += 1
+            update_question()
+        else:
+            display_house()
+            if next_button:
+                next_button.style.display = "none"  # Cache le bouton "Suivant"
+
+    def update_question():
+        document["questionnaire"].clear()
+        create_question(questions[counter][0], questions[counter][1])
+
+    def display_house():
+        document["questionnaire"].clear()
+        # Ajoutez le code pour afficher la maison de l'utilisateur ici
+
+    # Création de la première question
+    create_question(questions[counter][0], questions[counter][1])
+
+    next_button = document.createElement("button")
+    next_button.text = "Suivant"
+    next_button.bind("click", increment_counter)
+    document <= next_button
+
+
+    </script>
+
+</body>
+
 </html>
