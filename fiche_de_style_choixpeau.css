@@ -11,14 +11,14 @@ margin-right: auto;
 }
 
 h1 {
-background-color: aqua;
+background-color: rgb(255, 255, 255);
 text-align: center; 
-color: rgb(111, 214, 128);
+color: rgb(0, 0, 0);
 font-family: cursive;
 }
 
 body {
-background-color: aquamarine;
+background-color: rgb(255, 255, 255);
 text-align: center;
 }
 
@@ -37,7 +37,7 @@ question{
 }
 
 button{
-color: blue;
-background-color: rgb(12, 48, 48);
-border-color: rgb(12, 48, 48);
+color: rgb(255, 255, 255);
+background-color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);
 }
