@@ -167,31 +167,31 @@ def vok(ev):
     global counter
     global questions
     if counter < len(questions):
-        point(5, profile_setup, counter, questions)
+        point(7, profile_setup, counter, questions)
 def ok(ev):
     global profile_setup
     global counter
     global questions
     if counter < len(questions):
-        point(2, profile_setup, counter, questions)
+        point(4, profile_setup, counter, questions)
 def ntr(ev):
     global profile_setup
     global counter
     global questions
     if counter < len(questions):
-        point(0, profile_setup, counter, questions)
+        point(2, profile_setup, counter, questions)
 def nok(ev):
     global profile_setup
     global counter
     global questions
     if counter < len(questions):
-        point(-2, profile_setup, counter, questions)
+        point(-4, profile_setup, counter, questions)
 def vnok(ev):
     global profile_setup
     global counter
     global questions
     if counter < len(questions):
-        point(-5, profile_setup, counter, questions)
+        point(-7, profile_setup, counter, questions)
 
 # Création de la première question
 create_question(questions[counter][0])
