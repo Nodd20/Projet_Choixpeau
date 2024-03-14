@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="fiche_de_style_choixpeau.css" rel="stylesheet">
+    <link href="Caracteristiques_des_persos.csv" rel="csv">
+    <link href="Characters.csv" rel="csv">
 
     <script type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/brython@3.12.2/brython.min.js">
@@ -25,117 +27,198 @@
     <div id="questionnaire"></div>
 
     <script type="text/python">
-    from browser import document
+from browser import document
+import csv
 
-    questions = [
-        ("Question 1 : Tu es du genre à aller à la bibliothèque pour lire au lieu de sortir dehors"),
-        ("Question 2 : Tu préfères prendre des risques quitte à mettre des gens en danger que de ne rien faire"),
-        ("Question 3 : Tu es pres a sacrifier du temps avec les autres pour les aider"),
-        ("Question 4 : Tu souhaites accomplir de grandes choses, rester dans l histoire"),
-        ("Question 5 : Tu fais attention aux personnes qui t entourent et essaye de les rendre heureux"),
-        ("Question 6 : Tu apprecies parler de sujets serieux en ayant des connaissances sur le sujet"),
-        ("Question 7 : Tu serais capable d aller chercher un bebe dans une maison en feu, de mettre ta vie en jeu"),
-        ("Question 8 : Dans une competition tu penses toujours etre en mesure de gagner"),
-        ("Question 9 : Tu recherches la verite peu importe les consequences"),
-        ("Question 10 : Tu aimes partager avec tes amis"),
-        ("Question 11 : Il t arrive regulierement de surmonter tes peurs"),
-        ("Question 12 : Tu vas souvent voir ta famille"),
-        ("Question 13 : Tu es capable de prendre des decisions difficiles  si cela est necessaire"),
-        ("Question 14 : Il t arrive frequemment de rester plonger dans tes pensees"),
-        ("Question 15 : Je trouve important de donner de mon temps pour des actions bénévoles ou caritatives"),
-        ("Question 16 : J'aime aider les autres et je suis souvent considéré comme une personne empathique."),
-        ("Question 17 : J'accorde une grande importance à l'intégrité et à la loyauté dans mes relations avec les autres"),
-        ("Question 18 : Préfères-tu régler les conflits en trouvant un compromis qui satisfait tout le monde plutôt que de chercher à imposer ta volonté ?"),
-        ("Question 19 : Est-ce que tu te sens mal quand tu vois quelqu'un être maltraité ou malheureux ?"),
-        ("Question 20 : As-tu tendance à pardonner facilement aux personnes qui t'ont fait du tort ?")
-    ]
+# Fusion de tables début
+with open("Caracteristiques_des_persos.csv", mode='r', encoding='utf-8') as f:
+    reader = csv.DictReader(f, delimiter=';')
+    caracteristiques_persos = [{key : value for key, value in element.items()} for element in reader]
 
-    counter = 0
-    next_button = None
+with open("Characters.csv", mode='r', encoding='utf-8') as f:
+    reader = csv.DictReader(f, delimiter=';')
+    caracteristiques_persos_tout = [{key : value for key, value in element.items()} for element in reader]
 
-    profile_setup = {"courage": 50, "ambition": 50, "intelligence": 50, "bonte": 50} #A COMPLETER 
+list_characters = []
 
-    def create_question(question):
-        question_div = document.createElement("div")
-        question_div.text = question
-        document["questionnaire"] <= question_div
+for persos_1 in caracteristiques_persos:
+    for persos_2 in caracteristiques_persos_tout:
+        if persos_1['Name'] == persos_2['Name']:
+            persos_1.update(persos_2)
+            list_characters.append(persos_1)
 
-    def increment_counter():
-        global counter
-        global next_button
+print(list_characters)
 
-        if counter < len(questions) - 1:
-            counter += 1
-            update_question()
-        else:
-            display_house()
-            if next_button:
-                next_button.style.display = "none"  # Cache le bouton "Suivant"
+questions = [
+    ("Question 1 : Tu es du genre à aller à la bibliothèque pour lire au lieu de sortir dehors","intelligence"),
+    ("Question 2 : Tu préfères prendre des risques quitte à mettre des gens en danger que de ne rien faire","courage"),
+    ("Question 3 : Tu es prêt a sacrifier du temps avec les autres pour les aider","bonte"),
+    ("Question 4 : Tu souhaites accomplir de grandes choses et marquer l'histoire","ambition"),
+    ("Question 5 : Tu fais attention aux personnes qui t entourent et essaye de les rendre heureux","bonte"),
+    ("Question 6 : Tu apprecies parler de sujets serieux en ayant des connaissances sur le sujet","intelligence"),
+    ("Question 7 : Tu serais capable d aller chercher un bebe dans une maison en feu, de mettre ta vie en jeu","courage"),
+    ("Question 8 : Dans une competition tu penses toujours etre en mesure de gagner","ambition"),
+    ("Question 9 : Es tu genre à reconnaitre et à apprendre de tes erreurs","intelligence"),
+    ("Question 10 : Tu aimes partager avec tes amis","bonte"),
+    ("Question 11 : Il t arrive regulierement de surmonter tes peurs","courage"),
+    ("Question 12 : Pendant les évaluations tous le monde veut s'asseoir à côté de toi","intelligence"),
+    ("Question 13 : Tu es capable de prendre des decisions difficiles  si cela est necessaire","courage"),
+    ("Question 14 :  Pour toi tout est possible","ambition"),
+    ("Question 15 : Je trouve important de donner de mon temps pour des actions bénévoles ou caritatives","bonte"),
+    ("Question 16 : Si ton pays est en guerre tu n'hésiterais pas à aller au front","courage"),
+    ("Question 17 : J'accorde une grande importance à l'intégrité et à la loyauté dans mes relations avec les autres","bonte"),
+    ("Question 18 : Tu es du genre à être un leader","ambition"),
+    ("Question 19 : Tu ne t'endors jamais si tu n'as rien appris dans la journée","intelligence"),
+    ("Question 20 : As-tu tendance à pardonner facilement aux personnes qui t'ont fait du tort ?","bonte")
+]
 
-    def update_question():
-        document["questionnaire"].clear()
-        create_question(questions[counter])
+counter = 0
+next_button = None
 
-    def display_house():
-        document["questionnaire"].clear()
-        # Ajoutez le code pour afficher la maison de l'utilisateur ici
+profile_setup = {"courage": 50, "ambition": 50, "intelligence": 50, "bonte": 50}
+
+def voisins(dico_voisin, dico_cara):
+    '''
+    '''
+    distance_tab = []
+    for compared in dico_voisin:
+        distance = (int(compared['Courage']) - int(dico_cara['courage']) ** 2 + int(compared['Ambition']) - int(dico_cara['ambition']) ** 2 + int(compared['Intelligence']) - int(dico_cara['intelligence']) ** 2 + int(compared['Good']) - int(dico_cara['bonte']) ** 2) ** 0.5
+        distance_tab.append({'Name': compared['Name'], 'Distance': distance, 'House': compared['House']})
     
-    def point(value, dico_cara, counter, question_liste):
-        caracteristic = question_liste[counter][2]
-        dico_cara[caracteristic] += value
-        print(profile_setup)
-        increment_counter
+    print(distance_tab)
+    distance_tab.sort(key=lambda d: d['Distance'])
+
+    return distance_tab
+def choixpeau(distance_tab, k=5):
+    '''
+    '''
+
+    distance_tab.sort(key=lambda d: d['Distance'])
+    
+    maisons = [{'house': 'Gryffindor', 'number': 0} , {'house':'Slytherin','number': 0}, {'house':'Ravenclaw','number': 0}, {'house':'Hufflepuff', 'number': 0}]
+    
+    # liste de dictionnaires nécessaire pour permettre le tri ultérieur des données
+
+    tab_voisins = []
+
+    for j in range(k):
+        tab_voisins.append({'Name' : distance_tab[j]['Name'],'House' : distance_tab[j]['House']})
+        if distance_tab[j]['House'] == 'Gryffindor':
+            maisons[0]['number'] += 1
+        elif distance_tab[j]['House'] == 'Slytherin':
+            maisons[1]['number'] += 1
+        elif distance_tab[j]['House'] == 'Ravenclaw':
+            maisons[2]['number'] += 1
+        elif distance_tab[j]['House'] == 'Hufflepuff':
+            maisons[3]['number'] += 1
         
-        
-    def vok(ev):
-        global profile_setup
-        global counter
-        global questions
+    maisons.sort(key=lambda x: x['number'], reverse=True) # tri des données de la liste de dictionnaire grâce à la clé 'number' 
+
+    if maisons[0]['number'] == maisons[1]['number']:
+        if maisons[0]['house'] == distance_tab[0]['House']:
+            choixpeau = maisons[0]['house']
+        else:
+            choixpeau = maisons[1]['house']
+            
+    # En cas d'égalité, est pris le voisin le plus proche faisant parti des maisons égalitaires
+    else:
+        choixpeau = maisons[0]['house']
+    
+    return choixpeau, tab_voisins
+
+def create_question(question):
+    question_div = document.createElement("div")
+    question_div.text = question
+    document["questionnaire"] <= question_div
+
+def increment_counter(profile):
+    global counter
+
+    if counter < len(questions) - 1:
+        counter += 1
+        update_question()
+    else:
+        profile['courage'] = profile['courage'] // 10
+        profile['ambition'] = profile['ambition'] // 10
+        profile['intelligence'] = profile['intelligence'] // 10
+        profile['bonte'] = profile['bonte'] // 10
+        print(profile)
+        neighbours = voisins(list_characters, profile)
+        house = choixpeau(neighbours)
+        display_house(house)
+
+def update_question():
+    global counter
+    document["questionnaire"].clear()
+    create_question(questions[counter][0])
+
+def display_house(house):
+    document["questionnaire"].clear()
+    # Ajoutez le code pour afficher la maison de l'utilisateur ici
+    print(house)
+    
+def point(value, dico_cara, counter, question_liste):
+    caracteristic = question_liste[counter][1]
+    dico_cara[caracteristic] += value
+    print(dico_cara)
+    increment_counter(dico_cara)
+def vok(ev):
+    global profile_setup
+    global counter
+    global questions
+    if counter < len(questions):
         point(5, profile_setup, counter, questions)
-    def ok(ev):
-        global profile_setup
-        global counter
-        global questions
+def ok(ev):
+    global profile_setup
+    global counter
+    global questions
+    if counter < len(questions):
         point(2, profile_setup, counter, questions)
-    def ntr(ev):
-        global profile_setup
-        global counter
-        global questions
+def ntr(ev):
+    global profile_setup
+    global counter
+    global questions
+    if counter < len(questions):
         point(0, profile_setup, counter, questions)
-    def nok(ev):
-        global profile_setup
-        global counter
-        global questions
+def nok(ev):
+    global profile_setup
+    global counter
+    global questions
+    if counter < len(questions):
         point(-2, profile_setup, counter, questions)
-    def vnok(ev):
-        global profile_setup
-        global counter
-        global questions
+def vnok(ev):
+    global profile_setup
+    global counter
+    global questions
+    if counter < len(questions):
         point(-5, profile_setup, counter, questions)
 
-    # Création de la première question
-    create_question(questions[counter])
+# Création de la première question
+create_question(questions[counter][0])
 
-    vok_button = document.createElement("button", value=3)
-    ok_button = document.createElement("button")
-    neutral_button = document.createElement("button")
-    nok_button = document.createElement("button")
-    vnok_button = document.createElement("button")
-    vok_button.text = "VOK"
-    ok_button.text = "OK"
-    neutral_button.text = "NEUTRAL"
-    nok_button.text = "NOK"
-    vnok_button.text = "VNOK"
-    vok_button.bind("click", vok)
-    ok_button.bind("click", ok)
-    neutral_button.bind("click", ntr)
-    nok_button.bind("click", nok)
-    vnok_button.bind("click", vnok)
-    document <= vok_button
-    document <= ok_button
-    document <= neutral_button
-    document <= nok_button
-    document <= vnok_button
+vok_button = document.createElement("button", value=3)
+ok_button = document.createElement("button")
+neutral_button = document.createElement("button")
+nok_button = document.createElement("button")
+vnok_button = document.createElement("button")
+vok_button.text = "VOK"
+ok_button.text = "OK"
+neutral_button.text = "NEUTRAL"
+nok_button.text = "NOK"
+vnok_button.text = "VNOK"
+vok_button.bind("click", vok)
+ok_button.bind("click", ok)
+neutral_button.bind("click", ntr)
+nok_button.bind("click", nok)
+vnok_button.bind("click", vnok)
+document <= vok_button
+document <= ok_button
+document <= neutral_button
+document <= nok_button
+document <= vnok_button
+    
+
+
 
     </script>
 
