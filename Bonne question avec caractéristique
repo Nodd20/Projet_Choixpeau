@@ -1,0 +1,22 @@
+questions = [
+        ("Question 1 : Tu es du genre à aller à la bibliothèque pour lire au lieu de sortir dehors","intelligence"),
+        ("Question 2 : Tu préfères prendre des risques quitte à mettre des gens en danger que de ne rien faire","courage"),
+        ("Question 3 : Tu es prêt a sacrifier du temps avec les autres pour les aider","bonté"),
+        ("Question 4 : Tu souhaites accomplir de grandes choses et marquer l'histoire","ambition"),
+        ("Question 5 : Tu fais attention aux personnes qui t entourent et essaye de les rendre heureux","bonté"),
+        ("Question 6 : Tu apprecies parler de sujets serieux en ayant des connaissances sur le sujet","intelligence"),
+        ("Question 7 : Tu serais capable d aller chercher un bebe dans une maison en feu, de mettre ta vie en jeu","courage"),
+        ("Question 8 : Dans une competition tu penses toujours etre en mesure de gagner","ambition"),
+        ("Question 9 : Es tu genre à reconnaitre et à apprendre de tes erreurs","intelligence"),
+        ("Question 10 : Tu aimes partager avec tes amis","bonté"),
+        ("Question 11 : Il t arrive regulierement de surmonter tes peurs","courage"),
+        ("Question 12 : Pendant les évaluations tous le monde veut s'asseoir à côté de toi","intelligence"),
+        ("Question 13 : Tu es capable de prendre des decisions difficiles  si cela est necessaire","courage"),
+        ("Question 14 :  Pour toi tout est possible","ambition"),
+        ("Question 15 : Je trouve important de donner de mon temps pour des actions bénévoles ou caritatives","bonté"),
+        ("Question 16 : Si ton pays est en guerre tu n'hésiterais pas à aller au front","courage"),
+        ("Question 17 : J'accorde une grande importance à l'intégrité et à la loyauté dans mes relations avec les autres","bonté"),
+        ("Question 18 : Tu es du genre à être un leader","ambition"),
+        ("Question 19 : Tu ne t'endors jamais si tu n'as rien appris dans la journée","intelligence"),
+        ("Question 20 : As-tu tendance à pardonner facilement aux personnes qui t'ont fait du tort ?","bonté")
+    ]
