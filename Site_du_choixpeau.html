@@ -30,30 +30,32 @@
     from browser import document
 
     questions = [
-        ("Question 1 : Tu es du genre à aller à la bibliothèque pour lire au lieu de sortir dehors", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
-        ("Question 2 : Tu préfères prendre des risques quitte à mettre des gens en danger que de ne rien faire", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
-        ("Question 3 : Tu es pres a sacrifier du temps avec les autres pour les aider", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
-        ("Question 4 : Tu souhaites accomplir de grandes choses, rester dans l histoire", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
-        ("Question 5 : Tu fais attention aux personnes qui t entourent et essaye de les rendre heureux", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
-        ("Question 6 : Tu apprecies parler de sujets serieux en ayant des connaissances sur le sujet", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
-        ("Question 7 : Tu serais capable d aller chercher un bebe dans une maison en feu, de mettre ta vie en jeu", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
-        ("Question 8 : Dans une competition tu penses toujours etre en mesure de gagner", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
-        ("Question 9 : Tu recherches la verite peu importe les consequences", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
-        ("Question 10 : Tu aimes partager avec tes amis", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
-        ("Question 11 : Il t arrive regulierement de surmonter tes peurs", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
-        ("Question 12 : Tu vas souvent voir ta famille", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
-        ("Question 13 : Tu es capable de prendre des decisions difficiles  si cela est necessaire", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
-        ("Question 14 : Il t arrive frequemment de rester plonger dans tes pensees", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
-        ("Question 15 : Je trouve important de donner de mon temps pour des actions bénévoles ou caritatives", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
-        ("Question 16 : J'aime aider les autres et je suis souvent considéré comme une personne empathique.", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
-        ("Question 17 : J'accorde une grande importance à l'intégrité et à la loyauté dans mes relations avec les autres", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
-        ("Question 18 : Préfères-tu régler les conflits en trouvant un compromis qui satisfait tout le monde plutôt que de chercher à imposer ta volonté ?", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
-        ("Question 19 : Est-ce que tu te sens mal quand tu vois quelqu'un être maltraité ou malheureux ?", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"]),
-        ("Question 20 : As-tu tendance à pardonner facilement aux personnes qui t'ont fait du tort ?", ["Pas du tout d'accord", "Pas trop d'accord", "Neutre", "D'accord", "Complètement d'accord"])
+        ("Question 1 : Tu es du genre à aller à la bibliothèque pour lire au lieu de sortir dehors"),
+        ("Question 2 : Tu préfères prendre des risques quitte à mettre des gens en danger que de ne rien faire"),
+        ("Question 3 : Tu es pres a sacrifier du temps avec les autres pour les aider"),
+        ("Question 4 : Tu souhaites accomplir de grandes choses, rester dans l histoire"),
+        ("Question 5 : Tu fais attention aux personnes qui t entourent et essaye de les rendre heureux"),
+        ("Question 6 : Tu apprecies parler de sujets serieux en ayant des connaissances sur le sujet"),
+        ("Question 7 : Tu serais capable d aller chercher un bebe dans une maison en feu, de mettre ta vie en jeu"),
+        ("Question 8 : Dans une competition tu penses toujours etre en mesure de gagner"),
+        ("Question 9 : Tu recherches la verite peu importe les consequences"),
+        ("Question 10 : Tu aimes partager avec tes amis"),
+        ("Question 11 : Il t arrive regulierement de surmonter tes peurs"),
+        ("Question 12 : Tu vas souvent voir ta famille"),
+        ("Question 13 : Tu es capable de prendre des decisions difficiles  si cela est necessaire"),
+        ("Question 14 : Il t arrive frequemment de rester plonger dans tes pensees"),
+        ("Question 15 : Je trouve important de donner de mon temps pour des actions bénévoles ou caritatives"),
+        ("Question 16 : J'aime aider les autres et je suis souvent considéré comme une personne empathique."),
+        ("Question 17 : J'accorde une grande importance à l'intégrité et à la loyauté dans mes relations avec les autres"),
+        ("Question 18 : Préfères-tu régler les conflits en trouvant un compromis qui satisfait tout le monde plutôt que de chercher à imposer ta volonté ?"),
+        ("Question 19 : Est-ce que tu te sens mal quand tu vois quelqu'un être maltraité ou malheureux ?"),
+        ("Question 20 : As-tu tendance à pardonner facilement aux personnes qui t'ont fait du tort ?")
     ]
 
     counter = 0
     next_button = None
+
+    rep = ["Pas du tout d'accord","Pas d'accord","Neutre","D'accord","Totalement d'accord"]
 
     def create_question(question, answers):
         question_div = document.createElement("div")
@@ -84,14 +86,14 @@
 
     def update_question():
         document["questionnaire"].clear()
-        create_question(questions[counter][0], questions[counter][1])
+        create_question(questions[counter], rep)
 
     def display_house():
         document["questionnaire"].clear()
         # Ajoutez le code pour afficher la maison de l'utilisateur ici
 
     # Création de la première question
-    create_question(questions[counter][0], questions[counter][1])
+    create_question(questions[counter], rep)
 
     next_button = document.createElement("button")
     next_button.text = "Suivant"
