@@ -47,8 +47,6 @@ for persos_1 in caracteristiques_persos:
             persos_1.update(persos_2)
             list_characters.append(persos_1)
 
-print(list_characters)
-
 questions = [
     ("Question 1 : Tu es du genre à aller à la bibliothèque pour lire au lieu de sortir dehors","intelligence"),
     ("Question 2 : Tu préfères prendre des risques quitte à mettre des gens en danger que de ne rien faire","courage"),
@@ -77,6 +75,8 @@ next_button = None
 
 profile_setup = {"courage": 50, "ambition": 50, "intelligence": 50, "bonte": 50}
 
+def lamb(d):
+    return d['Distance']
 def voisins(dico_voisin, dico_cara):
     '''
     '''
@@ -85,8 +85,7 @@ def voisins(dico_voisin, dico_cara):
         distance = (int(compared['Courage']) - int(dico_cara['courage']) ** 2 + int(compared['Ambition']) - int(dico_cara['ambition']) ** 2 + int(compared['Intelligence']) - int(dico_cara['intelligence']) ** 2 + int(compared['Good']) - int(dico_cara['bonte']) ** 2) ** 0.5
         distance_tab.append({'Name': compared['Name'], 'Distance': distance, 'House': compared['House']})
     
-    print(distance_tab)
-    distance_tab.sort(key=lambda d: d['Distance'])
+    distance_tab.sort(lamb(distance_tab))
 
     return distance_tab
 def choixpeau(distance_tab, k=5):
