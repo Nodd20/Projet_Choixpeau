@@ -24,23 +24,6 @@
 
     <div id="questionnaire"></div>
 
-    <div>
-        <input type="radio" id="b2" name="rep" value="5">
-        <label for="b2">Parfaitement d'accord</label>
-
-        <input type="radio" id="b1" name="rep" value="2">
-        <label for="b1">D'accord</label>
-
-        <input type="radio" id="b0" name="rep" value="0" checked>
-        <label for="b0">Neutre</label>
-
-        <input type="radio" id="b-1" name="rep" value="-2">
-        <label for="b-1">Pas d'accord</label>
-
-        <input type="radio" id="b-2" name="rep" value="-5">
-        <label for="b-2">Pas du tout d'accord</label>
-    </div>
-
     <script type="text/python">
     from browser import document
 
@@ -70,14 +53,17 @@
     counter = 0
     next_button = None
 
+    profile_setup = {"courage": 50, "ambition": 50, "intelligence": 50, "bonte": 50} #A COMPLETER 
+
     def create_question(question):
         question_div = document.createElement("div")
         question_div.text = question
         document["questionnaire"] <= question_div
 
-    def increment_counter(event):
+    def increment_counter():
         global counter
         global next_button
+
         if counter < len(questions) - 1:
             counter += 1
             update_question()
@@ -93,14 +79,63 @@
     def display_house():
         document["questionnaire"].clear()
         # Ajoutez le code pour afficher la maison de l'utilisateur ici
+    
+    def point(value, dico_cara, counter, question_liste):
+        caracteristic = question_liste[counter][2]
+        dico_cara[caracteristic] += value
+        print(profile_setup)
+        increment_counter
+        
+        
+    def vok(ev):
+        global profile_setup
+        global counter
+        global questions
+        point(5, profile_setup, counter, questions)
+    def ok(ev):
+        global profile_setup
+        global counter
+        global questions
+        point(2, profile_setup, counter, questions)
+    def ntr(ev):
+        global profile_setup
+        global counter
+        global questions
+        point(0, profile_setup, counter, questions)
+    def nok(ev):
+        global profile_setup
+        global counter
+        global questions
+        point(-2, profile_setup, counter, questions)
+    def vnok(ev):
+        global profile_setup
+        global counter
+        global questions
+        point(-5, profile_setup, counter, questions)
+
     # Création de la première question
     create_question(questions[counter])
 
-    next_button = document.createElement("button")
-    next_button.text = "Suivant"
-    next_button.bind("click", increment_counter)
-    document <= next_button
-
+    vok_button = document.createElement("button", value=3)
+    ok_button = document.createElement("button")
+    neutral_button = document.createElement("button")
+    nok_button = document.createElement("button")
+    vnok_button = document.createElement("button")
+    vok_button.text = "VOK"
+    ok_button.text = "OK"
+    neutral_button.text = "NEUTRAL"
+    nok_button.text = "NOK"
+    vnok_button.text = "VNOK"
+    vok_button.bind("click", vok)
+    ok_button.bind("click", ok)
+    neutral_button.bind("click", ntr)
+    nok_button.bind("click", nok)
+    vnok_button.bind("click", vnok)
+    document <= vok_button
+    document <= ok_button
+    document <= neutral_button
+    document <= nok_button
+    document <= vnok_button
 
     </script>
 
