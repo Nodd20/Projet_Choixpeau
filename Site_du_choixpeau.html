@@ -84,15 +84,13 @@ def voisins(dico_voisin, dico_cara):
     for compared in dico_voisin:
         distance = (int(compared['Courage']) - int(dico_cara['courage']) ** 2 + int(compared['Ambition']) - int(dico_cara['ambition']) ** 2 + int(compared['Intelligence']) - int(dico_cara['intelligence']) ** 2 + int(compared['Good']) - int(dico_cara['bonte']) ** 2) ** 0.5
         distance_tab.append({'Name': compared['Name'], 'Distance': distance, 'House': compared['House']})
-    
-    distance_tab.sort(lamb(distance_tab))
 
     return distance_tab
 def choixpeau(distance_tab, k=5):
     '''
     '''
 
-    distance_tab.sort(key=lambda d: d['Distance'])
+    distance_tab.sort(key=lambda d: d['Distance'].real)
     
     maisons = [{'house': 'Gryffindor', 'number': 0} , {'house':'Slytherin','number': 0}, {'house':'Ravenclaw','number': 0}, {'house':'Hufflepuff', 'number': 0}]
     
@@ -154,7 +152,10 @@ def update_question():
 def display_house(house):
     document["questionnaire"].clear()
     # Ajoutez le code pour afficher la maison de l'utilisateur ici
-    print(house)
+    print(house[0])
+    house_div = document.createElement("div")
+    house_div.text = house[0]
+    document["questionnaire"] <= house_div
     
 def point(value, dico_cara, counter, question_liste):
     caracteristic = question_liste[counter][1]
