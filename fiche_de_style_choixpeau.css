@@ -1,25 +1,22 @@
-p {
-text-align: center;   
-color: rgb(177, 158, 52);
-}
-
 img { 
 animation: rotate 2s linear;
 display: block;
-margin-left: auto;
-margin-right: auto;
+margin-left: 25;
+margin-right: 25;
 }
 
 h1 {
-background-color: rgb(255, 255, 255);
+background-color: rgb(66, 150, 150);
 text-align: center; 
 color: rgb(0, 0, 0);
 font-family: cursive;
 }
 
 body {
-background-color: rgb(255, 255, 255);
+background-color: rgb(66, 150, 150);
 text-align: center;
+font-family: cursive;
+font-size: large;
 }
 
 @keyframes rotate {
@@ -38,6 +35,13 @@ question{
 
 button{
 color: rgb(255, 255, 255);
-background-color: rgb(0, 0, 0);
-border-color: rgb(0, 0, 0);
+background-color: rgb(59, 139, 79);
+border-color: rgb(29, 66, 40);
+padding: 25;
+margin: 15;
+font-family: cursive;
+}
+
+button:hover{
+background-color: rgb(81, 182, 106);
 }
