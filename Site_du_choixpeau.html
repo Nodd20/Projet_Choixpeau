@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -74,6 +75,9 @@ profile_setup = {"courage": 50, "ambition": 50, "intelligence": 50, "bonte": 50}
 
 def voisins(dico_voisin, dico_cara):
     '''
+    entrée: table de données, profile
+    sortie: table contenant les données des voisins et leur distance au profile
+
     '''
     distance_tab = []
     for compared in dico_voisin:
@@ -83,6 +87,8 @@ def voisins(dico_voisin, dico_cara):
     return distance_tab
 def choixpeau(distance_tab, k=5):
     '''
+    entrée: tables des distances
+    sortie: maison finalement choisie et table des 5 voisins les plus proches
     '''
 
     distance_tab.sort(key=lambda d: d['Distance'])
@@ -119,11 +125,22 @@ def choixpeau(distance_tab, k=5):
     return choixpeau, tab_voisins
 
 def create_question(question):
+    '''
+    entrée: question
+    sortie: affichage de la question
+    '''
     question_div = document.createElement("div")
     question_div.text = question
     document["questionnaire"] <= question_div
 
 def increment_counter(profile):
+    '''
+    entrée: profile
+    sortie: affichage de la maison
+    Cette fonction est la fonction principale de ce projet
+    elle permet soit le changement de questions tant qu'il y en a
+    soit l'affichage final de la maison
+    '''
     global counter
 
     if counter < len(questions) - 1:
@@ -141,11 +158,17 @@ def increment_counter(profile):
         pass
 
 def update_question():
+    '''
+    Permet de passer à la prochaine question
+    '''
     global counter
     document["questionnaire"].clear()
     create_question(questions[counter][0])
 
 def display_house(house):
+    '''
+    Affiche la maison à la fin du programme
+    '''
     document["questionnaire"].clear()
     # Ajoutez le code pour afficher la maison de l'utilisateur ici
     house_div = document.createElement("div")
@@ -153,6 +176,9 @@ def display_house(house):
     document["questionnaire"] <= house_div
     
 def point(value, dico_cara, counter, question_liste):
+    '''
+    Permet le calcul des points
+    '''
     caracteristic = question_liste[counter][1]
     dico_cara[caracteristic] += value
     increment_counter(dico_cara)
