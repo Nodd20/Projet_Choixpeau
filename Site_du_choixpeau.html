@@ -47,8 +47,6 @@ for persos_1 in caracteristiques_persos:
             persos_1.update(persos_2)
             list_characters.append(persos_1)
 
-print(list_characters)
-
 questions = [
     ("Question 1 : Tu es du genre à aller à la bibliothèque pour lire au lieu de sortir dehors","intelligence"),
     ("Question 2 : Tu préfères prendre des risques quitte à mettre des gens en danger que de ne rien faire","courage"),
@@ -139,7 +137,6 @@ def increment_counter(profile):
         profile['ambition'] = profile['ambition'] / 10
         profile['intelligence'] = profile['intelligence'] / 10
         profile['bonte'] = profile['bonte'] / 10
-        print(profile)
         neighbours = voisins(list_characters, profile)
         house = choixpeau(neighbours)
         display_house(house)
@@ -154,8 +151,6 @@ def update_question():
 def display_house(house):
     document["questionnaire"].clear()
     # Ajoutez le code pour afficher la maison de l'utilisateur ici
-    print(house[0])
-    print(house[1])
     house_div = document.createElement("div")
     house_div.text = house[0]
     document["questionnaire"] <= house_div
@@ -163,7 +158,6 @@ def display_house(house):
 def point(value, dico_cara, counter, question_liste):
     caracteristic = question_liste[counter][1]
     dico_cara[caracteristic] += value
-    print(dico_cara)
     increment_counter(dico_cara)
 def vok(ev):
     global profile_setup
